@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 320px;
+      text-align: center;
+    }
+    h2 {
+      color: #4CAF50;
+    }
+    .nav-item {
+      display: block;
+      margin: 15px 0;
+      padding: 12px;
+      color: #ffffff;
+      background-color: #4CAF50;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 18px;
+      transition: background-color 0.3s;
+    }
+    .nav-item:hover {
+      background-color: #45a049;
+    }
+  </style>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => console.log('Service Worker registered:', registration))
+        .catch(error => console.log('Service Worker registration failed:', error));
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>Dashboard</h2>
+    <a href="biogas.html" class="nav-item">Biogas Plant</a>
+    <a href="waste.html" class="nav-item">Waste Management Plant</a>
+    <a href="agriculture.html" class="nav-item">Agriculture</a>
+    <a href="solar.html" class="nav-item">Solar Power Plant</a>
+  </div>
+</body>
+</html>

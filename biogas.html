@@ -4,36 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biogas Plant</title>
+  <link rel="manifest" href="manifest.json">
   <style>
-    body { font-family: Arial, sans-serif; }
-    .container { padding: 20px; }
-    input { display: block; margin: 10px 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+    h2 {
+      color: #4CAF50;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input[type="number"], textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      color: #ffffff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
   </style>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => console.log('Service Worker registered:', registration))
+        .catch(error => console.log('Service Worker registration failed:', error));
+    }
+  </script>
 </head>
 <body>
+  <div class="container">
+    <h2>Biogas Plant</h2>
+    <label>Feedstock Composition: Common Feedback</label>
+    <label for="temperature">Temperature (°C):</label>
+    <input type="number" id="temperature" value="30">
+    <label for="gasProduced">Gas Produced (Liters):</label>
+    <input type="number" id="gasProduced" value="500">
+    <label for="gasConsumed">Gas Consumed (Liters):</label>
+    <input type="number" id="gasConsumed" value="450">
+    <label for="biogasReport">7-Day Report:</label>
+    <textarea id="biogasReport" rows="4">Day 1: 500L produced, 450L consumed...</textarea>
+    <button onclick="updateBiogas()">Update Values</button>
+  </div>
 
-<div class="container">
-  <h2>Biogas Plant</h2>
-  <p>Feedstock Composition: Common Feedback</p>
-  <p>C/N Ratio: 20:1</p>
-  <p>Temperature: <input type="number" id="temperature" value="30"> °C</p>
-  <p>Amount of Gas Produced: <input type="number" id="gasProduced" value="500"> Liters</p>
-  <p>Amount of Gas Consumed: <input type="number" id="gasConsumed" value="450"> Liters</p>
-  <p>7 Days Report:</p>
-  <textarea id="biogasReport" rows="5" cols="50">Day 1: 500L produced, 450L consumed...</textarea>
-  <button onclick="updateBiogas()">Update Values</button>
-</div>
-
-<script>
-  function updateBiogas() {
-    const temperature = document.getElementById('temperature').value;
-    const gasProduced = document.getElementById('gasProduced').value;
-    const gasConsumed = document.getElementById('gasConsumed').value;
-    const report = `Updated Report:\nTemperature: ${temperature} °C\nGas Produced: ${gasProduced} L\nGas Consumed: ${gasConsumed} L\n...`;
-    document.getElementById('biogasReport').value = report;
-  }
-</script>
-
+  <script>
+    function updateBiogas() {
+      const temp = document.getElementById('temperature').value;
+      const produced = document.getElementById('gasProduced').value;
+      const consumed = document.getElementById('gasConsumed').value;
+      const report = `Updated Report:\nTemperature: ${temp} °C\nGas Produced: ${produced} L\nGas Consumed: ${consumed} L\n...`;
+      document.getElementById('biogasReport').value = report;
+    }
+  </script>
 </body>
 </html>
-

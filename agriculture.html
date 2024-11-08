@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agriculture</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+    h2 {
+      color: #4CAF50;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+  </style>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => console.log('Service Worker registered:', registration))
+        .catch(error => console.log('Service Worker registration failed:', error));
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>Agriculture</h2>
+    <label for="agricultureData">Data from Agri-X (Agriculture Version 4):</label>
+<!-- <label for="report">Report:</label> -->
+<textarea id="agricultureData" rows="6">
+  1. Crop Yield: 1200 kg/ha
+  2. Water Usage: 5000 liters/ha
+  3. Fertilizer Usage: 200 kg/ha
+  4. Pesticide Usage: 50 kg/ha
+  5. Labor Hours: 150 hours/ha
+</textarea>
+  </div>
+</body>
+</html>
