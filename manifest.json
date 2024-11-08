@@ -1,6 +1,6 @@
 {
-    "short_name": "PWA Dashboard",
-    "name": "Admin Dashboard PWA",
+    "short_name": "Agri-X",
+    "name": "Agri-X app for farmers",
     "icons": [
       {
         "src": "icons/icon-192x192.png",
